@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import axios from 'axios';
-import {Booklist} from './components/index';
+import {BookList} from './components/index';
 
 const App = () => {
   const languages = ['React', 'Vue', 'Angular'];
@@ -37,7 +37,7 @@ const App = () => {
         <Route
           exact path={'/'}
           render={
-            () => <Booklist
+            () => <BookList
               language={languages[0]}
               bookData={bookData}
             />
@@ -45,14 +45,14 @@ const App = () => {
         />
         <Route
           path={'/vue'}
-          render={() => <Booklist
+          render={() => <BookList
             language={languages[1]}
             bookData={bookData}
           />}
         />
         <Route
           path={'/angular'}
-          render={() => <Booklist
+          render={() => <BookList
             language={languages[2]}
             bookData={bookData}
           />}

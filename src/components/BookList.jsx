@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Booklist = (props) => {
+const BookList = (props) => {
     return (
         <div>
           <ul>
@@ -15,4 +15,4 @@ const Booklist = (props) => {
     )
 }
 
-export default Booklist;
+export default BookList;
