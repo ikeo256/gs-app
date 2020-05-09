@@ -1,29 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
-import axios from 'axios';
 import {BookList} from './components/index';
 
 const App = () => {
   const languages = ['React', 'Vue', 'Angular'];
   const [keyword, setKeyword] = useState('react');
-  const [bookData, setBookData] = useState(null);
 
   const handleClick = (keyword) => {
     setKeyword(keyword);
   }
-
-  useEffect(() => {
-    (async () => {
-      const requestUrl = 'https://www.googleapis.com/books/v1/volumes?q=intitle:'
-      await axios.get(`${requestUrl}${keyword}`)
-        .then((response) => {
-          setBookData(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-    })();
-  }, [keyword])
 
   return (
     <BrowserRouter>
@@ -39,7 +24,7 @@ const App = () => {
           render={
             () => <BookList
               language={languages[0]}
-              bookData={bookData}
+              keyword={keyword}
             />
           }
         />
@@ -47,14 +32,14 @@ const App = () => {
           path={'/vue'}
           render={() => <BookList
             language={languages[1]}
-            bookData={bookData}
+            keyword={keyword}
           />}
         />
         <Route
           path={'/angular'}
           render={() => <BookList
             language={languages[2]}
-            bookData={bookData}
+            keyword={keyword}
           />}
         />
       </div>
